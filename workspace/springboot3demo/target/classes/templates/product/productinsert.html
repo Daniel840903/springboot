@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>新增頁面</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f2f2f2; /* 灰色背景 */
+            font-family: Arial, sans-serif;
+            color: #333; /* 黑色文字 */
+        }
+
+        .row2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .search {
+            background-color: #fff; /* 白色背景 */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+        }
+
+        .search label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* 黑色文字 */
+        }
+
+        .search input[type="text"], .search input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn2 {
+            padding: 10px 20px;
+            background-color: #333; /* 黑色背景 */
+            color: #fff; /* 白色文字 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn2:hover {
+            background-color: #555; /* 深灰色背景 */
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{layout/navbar}"></div>
+    <div class="row2">
+        <form class="search" th:action="@{/productinsertPost}" method="post">
+            <label for="productName">商品名稱:</label>
+            <input type="text" id="productName" name="productName" placeholder="請输入商品名稱" required>
+            <label for="price">商品價格:</label>
+            <input type="text" id="price" name="price" placeholder="請输入商品價格" required>
+            <label for="description">商品描述:</label>
+            <input type="text" id="description" name="description" placeholder="請输入商品描述" required>
+            <label for="stockQuantity">商品庫存:</label>
+            <input type="text" id="stockQuantity" name="stockQuantity" placeholder="請输入商品庫存" required>
+            <input class="btn2" type="submit" value="新增">
+            <input class="btn2" type="button" onclick="returnProduct()" value="返回上一頁">
+        </form>
+    </div>
+    <script>
+        function returnProduct() {
+            window.location.href = '/sellphone/productlist';
+        }
+    </script>
+</body>
+</html>
